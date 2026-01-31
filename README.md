@@ -1,16 +1,173 @@
-# React + Vite
+# 🛣️ 휴게소픽픽 (Rest Pick Pick)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> 한국도로공사 공공데이터를 활용한 맞춤형 고속도로 휴게소 검색 서비스
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-19.2.0-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-7.2.4-646CFF?logo=vite)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.18-06B6D4?logo=tailwindcss)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📖 프로젝트 소개
 
-## React Compiler
+**휴게소픽픽**은 운전자들이 필요한 편의시설을 갖춘 고속도로 휴게소를 빠르고 쉽게 찾을 수 있도록 돕는 웹 서비스입니다.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+기존 내비게이션은 경로 안내에 집중되어 있어, 수유실, 샤워실, 약국 등 특정 편의시설이 있는 휴게소를 한눈에 찾기 어렵습니다. 특히 장거리 운전자나 영유아 동반 가족에게는 휴게소 정보의 부재가 큰 불편함이 될 수 있습니다.
 
-## Expanding the ESLint configuration
+이 프로젝트는 **한국도로공사에서 제공하는 공공데이터 API**를 활용하여 전국 휴게소의 편의시설 정보를 제공하고, 사용자가 원하는 조건에 맞는 휴게소를 지도와 리스트로 직관적으로 확인할 수 있도록 합니다.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ 주요 기능
+
+### 🔍 실시간 검색
+- 휴게소 이름으로 즉시 검색
+- 검색어 입력 시 실시간 필터링
+
+### 🏷️ 편의시설 필터링
+- **수유실** 🍼
+- **약국** 💊
+- **주유소** ⛽️
+- **샤워실** 🚿
+- 다중 필터 조합 가능 (AND 조건)
+
+### 🗺️ 인터랙티브 지도
+- Kakao Maps API를 활용한 위치 기반 시각화
+- 지도 마커 클릭 시 해당 휴게소 정보 자동 표시
+- 리스트에서 선택한 휴게소로 지도 자동 이동
+
+### 📍 Geocoding 지원
+- 주소 데이터를 좌표로 자동 변환
+- 모든 휴게소를 정확한 위치에 표시
+
+### 📱 반응형 디자인
+- 모바일, 태블릿, 데스크톱 모든 화면 크기 지원
+- 직관적이고 세련된 UI/UX
+
+---
+
+## 🛠️ 기술 스택
+
+### Frontend
+- **React 19.2.0** - UI 라이브러리
+- **TypeScript** - 타입 안정성
+- **Vite 7.2.4** - 빌드 도구 및 개발 서버
+- **TailwindCSS 4.1.18** - 유틸리티 우선 CSS 프레임워크
+
+### APIs
+- **한국도로공사 휴게소 편의시설 현황 API** - 공공데이터 포털
+- **Kakao Maps JavaScript API** - 지도 및 Geocoding
+
+### Libraries
+- **lucide-react** - 아이콘
+- **clsx / tailwind-merge** - 조건부 스타일링
+
+---
+
+## 🚀 시작하기
+
+### 1. 프로젝트 클론
+```bash
+git clone https://github.com/demi1277/rest-pick-pick.git
+cd rest-pick-pick
+```
+
+### 2. 의존성 설치
+```bash
+npm install
+```
+
+### 3. 환경 변수 설정
+프로젝트 루트에 `.env` 파일을 생성하고 아래 내용을 입력하세요:
+
+```env
+VITE_DATA_API_KEY=your_korea_expressway_api_key
+VITE_KAKAO_MAP_KEY=your_kakao_map_javascript_key
+```
+
+#### API 키 발급 방법
+- **한국도로공사 API**: [공공데이터 포털](https://www.data.go.kr/)에서 "휴게소 편의시설 현황" 검색 후 활용신청
+- **Kakao Maps API**: [Kakao Developers](https://developers.kakao.com/)에서 애플리케이션 생성 후 JavaScript 키 발급
+
+### 4. 개발 서버 실행
+```bash
+npm run dev
+```
+
+브라우저에서 `http://localhost:5173`으로 접속하세요.
+
+### 5. 프로덕션 빌드
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## 📂 프로젝트 구조
+
+```
+rest-pick-pick/
+├── src/
+│   ├── api/
+│   │   └── apiClient.ts          # 한국도로공사 API 클라이언트
+│   ├── components/
+│   │   ├── FilterBar.tsx         # 편의시설 필터 컴포넌트
+│   │   ├── MapView.tsx           # Kakao Maps 지도 컴포넌트
+│   │   ├── RestStopCard.tsx      # 휴게소 카드 컴포넌트
+│   │   └── ui/                   # 재사용 가능한 UI 컴포넌트
+│   ├── data/
+│   │   └── restStops.ts          # 데이터 타입 및 매핑 로직
+│   ├── App.tsx                   # 메인 애플리케이션
+│   └── main.tsx                  # 진입점
+├── .env                          # 환경 변수 (gitignore)
+└── package.json
+```
+
+---
+
+## 🎯 핵심 구현 사항
+
+### 공공데이터 활용
+- 한국도로공사 Open API를 통해 실시간 휴게소 정보 수집
+- API 응답 데이터를 프론트엔드에 맞게 가공 및 매핑
+
+### 데이터 전처리
+- 좌표가 없는 휴게소는 Kakao Geocoding API로 주소 → 좌표 변환
+- 편의시설 정보를 아이콘과 매핑하여 시각화
+
+### 사용자 경험 최적화
+- 클라이언트 사이드 필터링으로 빠른 응답 속도
+- 지도-리스트 양방향 인터랙션
+- 선택한 휴게소로 자동 스크롤 및 하이라이트
+
+---
+
+## 📸 스크린샷
+
+> 추후 추가 예정
+
+---
+
+## 🤝 기여
+
+이슈 및 풀 리퀘스트는 언제나 환영합니다!
+
+---
+
+## 📄 라이선스
+
+MIT License
+
+---
+
+## 👤 개발자
+
+**demi1277**
+- GitHub: [@demi1277](https://github.com/demi1277)
+
+---
+
+## 🙏 감사의 말
+
+- [한국도로공사](https://www.ex.co.kr/) - 공공데이터 제공
+- [Kakao Developers](https://developers.kakao.com/) - Maps API 제공
