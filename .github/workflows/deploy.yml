@@ -32,6 +32,9 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          VITE_DATA_API_KEY: ${{ secrets.VITE_DATA_API_KEY || 'placeholder' }}
+          VITE_KAKAO_MAP_KEY: ${{ secrets.VITE_KAKAO_MAP_KEY || 'placeholder' }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

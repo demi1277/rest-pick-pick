@@ -110,7 +110,7 @@ function App() {
                         />
                     </div>
 
-                    <div className="sticky top-20 z-40 bg-slate-50/95 backdrop-blur-sm pt-2 pb-2 -mx-4 px-4 lg:mx-0 lg:px-0">
+                    <div className="sticky top-15 z-40 bg-slate-50/95 backdrop-blur-sm pt-2 pb-2 -mx-4 px-4 lg:mx-0 lg:px-0">
                         <FilterBar
                             selectedFacilities={selectedFacilities}
                             onToggleFacility={handleToggleFacility}
