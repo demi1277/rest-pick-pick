@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background-color: rgb(255 255 255 / 0.7);
+    /* bg-white/70 */
+    backdrop-filter: blur(12px);
+    /* backdrop-blur-md */
+    border-bottom: 1px solid rgb(255 255 255 / 0.2);
+    /* border-white/20 */
+  }
+}
